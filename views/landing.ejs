@@ -1,0 +1,32 @@
+<%- include('partials/header', { title: "Dashboard" }) %>
+<h1>Dashboard</h1>
+<h2>Welcome, <%= user.username %>!</h2>
+<div class="role-and-logout-container">
+  <% if (user.role === 'admin') { %>
+  <p>Role: Admin</p>
+  <% } else { %>
+  <p>Role: User</p>
+  <% } %>
+  <p><a href="/logout">Logout</a></p>
+</div>
+
+<% if (user.role === 'admin') { %>
+
+<h2>All Registered Users:</h2>
+<!-- <ul> -->
+<% users.forEach(user => { %>
+<p>User: <% user.username %></p>
+<ul>
+  <li>Email: <%= user.email %></li>
+  <li>Role: <%= user.role %></li>
+</ul>
+<% }) %>
+<!-- </ul> -->
+
+<% } else { %>
+<h2>How may I help you today, <%= user.username %>?</h2>
+<p>
+  This page is currently under constructions as we add exciting and new
+  functionality. Please check back again later.
+</p>
+<% } %> <%- include('partials/footer') %>
